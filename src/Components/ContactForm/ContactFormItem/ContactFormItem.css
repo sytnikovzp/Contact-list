@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.contact-detail-item {
+.contact-form-item {
   margin: 10px;
   width: 250px;
   display: flex;
@@ -21,7 +21,6 @@ input {
   width: 50px;
   background-color: rgba(255, 0, 0, 0.562);
   color: white;
-  /* display: inline-block; */
 }
 
 .content {

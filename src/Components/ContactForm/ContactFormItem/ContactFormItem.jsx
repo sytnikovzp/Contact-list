@@ -1,23 +1,23 @@
 import { Component } from 'react';
-import './ContactDetailItem.css';
+import './ContactFormItem.css';
 
-export class ContactDetailItem extends Component {
+export class ContactFormItem extends Component {
   render() {
     return (
       <>
-        <div className='contact-detail-item'>
+        <div className='contact-form-item'>
           <input type='text' name='fName' id='fName' placeholder='First name' />
           <span className='clear-btn'>X</span>
         </div>
-        <div className='contact-detail-item'>
+        <div className='contact-form-item'>
           <input type='text' name='lName' id='lName' placeholder='Last name' />
           <span className='clear-btn'>X</span>
         </div>
-        <div className='contact-detail-item'>
+        <div className='contact-form-item'>
           <input type='text' name='eMail' id='eMail' placeholder='E-mail' />
           <span className='clear-btn'>X</span>
         </div>
-        <div className='contact-detail-item'>
+        <div className='contact-form-item'>
           <input type='text' name='cPhone' id='cPhone' placeholder='Phone' />
           <span className='clear-btn'>X</span>
         </div>
@@ -26,4 +26,4 @@ export class ContactDetailItem extends Component {
   }
 }
 
-export default ContactDetailItem;
+export default ContactFormItem;
