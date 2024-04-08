@@ -81,7 +81,7 @@ export class App extends Component {
         <div id='main-form'>
           <ContactList 
           contacts={this.state.contacts}
-          onToggle={this.toggleToEdit}
+          onToggle={this.toggleToContactEdit}
           onDelete={this.deleteContact}
           />
           <ContactForm onSubmit={this.addContact}/>

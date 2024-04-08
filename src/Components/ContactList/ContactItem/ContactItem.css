@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-.watch-item {
+.contact-item {
   background-color: #ebe6d9;
   border: 1px solid black;
   margin-bottom: 10px;
@@ -12,7 +12,7 @@
   align-items: center;
   padding-left: 5px;
 }
-.watch-item.done {
+.contact-item.edit-now {
   background-color: cadetblue;
 }
 .delete-btn {
