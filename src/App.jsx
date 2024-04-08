@@ -79,18 +79,27 @@ export class App extends Component {
       <div id='container'>
         <h2>Contact list</h2>
         <div id='main-form'>
-          <ContactList />
-          <ContactForm />
+          <ContactList 
+          contacts={this.state.contacts}
+          onToggle={this.toggleToEdit}
+          onDelete={this.deleteContact}
+          />
+          <ContactForm onSubmit={this.addContact}/>
           <div className='btn-block'>
             <button className='btn' id='new-btn'>
               New
             </button>
           </div>
           <div className='btn-block'>
-            <button className='btn' id='save-btn'>
+            <button
+              type='submit'
+              form='contact-form'
+              className='btn'
+              id='save-btn'
+            >
               Save
             </button>
-            <button className='btn' id='del-btn' disabled>
+            <button className='btn' id='save-btn' disabled>
               Delete
             </button>
           </div>

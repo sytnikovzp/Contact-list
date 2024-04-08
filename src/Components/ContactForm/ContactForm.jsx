@@ -1,12 +1,103 @@
 import { Component } from 'react';
 import './ContactForm.css';
-import ContactFormItem from './ContactFormItem/ContactFormItem';
 
 export class ContactForm extends Component {
+  state = {
+    fName: '',
+    lName: '',
+    eMail: '',
+    cPhone: '',
+  };
+
+  onInputChangeFirstName = (event) => {
+    this.setState({
+      fName: event.target.value,
+    });
+  };
+
+  onInputChangeLastName = (event) => {
+    this.setState({
+      lName: event.target.value,
+    });
+  };
+
+  onInputChangeEmail = (event) => {
+    this.setState({
+      eMail: event.target.value,
+    });
+  };
+
+  onInputChangeContactPhone = (event) => {
+    this.setState({
+      cPhone: event.target.value,
+    });
+  };
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit({
+      id: 0, // Здесь добавил нулевой ИД для красивой записи в LocalStorage
+      fName: this.state.fName,
+      lName: this.state.lName,
+      eMail: this.state.eMail,
+      cPhone: this.state.cPhone,
+      isEditNow: false,
+    });
+    this.setState({
+      fName: '',
+      lName: '',
+      eMail: '',
+      cPhone: '',
+    });
+  };
+
   render() {
     return (
-      <form id='contact-form'>
-        <ContactFormItem />
+      <form id='contact-form' onSubmit={this.onFormSubmit}>
+        <div className='contact-form-item'>
+          <input
+            type='text'
+            name='fName'
+            id='fName'
+            placeholder='First name'
+            value={this.state.fName}
+            onChange={this.onInputChangeFirstName}
+          />
+          <span className='clear-btn'>X</span>
+        </div>
+        <div className='contact-form-item'>
+          <input
+            type='text'
+            name='lName'
+            id='lName'
+            placeholder='Last name'
+            value={this.state.lName}
+            onChange={this.onInputChangeLastName}
+          />
+          <span className='clear-btn'>X</span>
+        </div>
+        <div className='contact-form-item'>
+          <input
+            type='email'
+            name='eMail'
+            id='eMail'
+            placeholder='E-mail'
+            value={this.state.eMail}
+            onChange={this.onInputChangeEmail}
+          />
+          <span className='clear-btn'>X</span>
+        </div>
+        <div className='contact-form-item'>
+          <input
+            type='tel'
+            name='cPhone'
+            id='cPhone'
+            placeholder='Phone'
+            value={this.state.cPhone}
+            onChange={this.onInputChangeContactPhone}
+          />
+          <span className='clear-btn'>X</span>
+        </div>
       </form>
     );
   }
