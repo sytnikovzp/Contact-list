@@ -1,30 +1,32 @@
 * {
   box-sizing: border-box;
 }
-.contact-item {
-  background-color: darkgoldenrod;
+.watch-item {
+  background-color: #ebe6d9;
   border: 1px solid black;
-  margin: 10px;
-  min-width: 500px;
-  max-width: 600px;
-  min-height: 30px;
+  margin-bottom: 10px;
+  min-width: 200px;
+  max-width: 300px;
+  height: 50px;
   display: flex;
   align-items: center;
+  padding-left: 5px;
 }
 .watch-item.done {
   background-color: cadetblue;
 }
 .delete-btn {
   border: 1px solid black;
-  min-height: 40px;
-  min-width: 40px;
+  min-height: 25px;
+  min-width: 25px;
   text-align: center;
   margin: auto;
   display: inline-block;
-  padding-top: 10px;
+  background-color: rgba(255, 0, 0, 0.562);
+  color: white;
 }
 .content {
-  min-width: 400px;
+  min-width: 300px;
   margin-right: 50px;
   font-size: 20px;
 }

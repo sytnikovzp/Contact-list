@@ -16,10 +16,10 @@ input {
 }
 
 .clear-btn {
-  border: 13px solid red;
+  border: 13px solid rgba(255, 0, 0, 0.062);
   height: 50px;
   width: 50px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.562);
   color: white;
   /* display: inline-block; */
 }
