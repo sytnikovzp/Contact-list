@@ -26,8 +26,8 @@
 
 #container {
   border: 1px solid black;
-  width: 400px;
-  height: 550px;
+  width: 600px;
+  height: 600px;
 }
 
 #main-form {
@@ -38,9 +38,8 @@
 }
 
 .btn-block {
-  /* border: 1px solid black; */
-  width: 180px;
-  height: 20px;
+  width: 280px;
+  height: 50px;
   margin-top: 20px;
 }
 
