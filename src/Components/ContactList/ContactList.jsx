@@ -4,7 +4,6 @@ import ContactItem from './ContactItem/ContactItem';
 
 export class ContactList extends Component {
   render() {
-    // console.log(this.props);
     return (
       <div id='wrapper'>
         <div id='contact-list'>

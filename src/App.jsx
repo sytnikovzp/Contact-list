@@ -57,6 +57,14 @@ export class App extends Component {
     });
   };
 
+  deleteContactByButton = (id) => {
+    this.setState((state) => {
+      const contacts = state.contacts.filter((contact) => contact.isEditNow !== true);
+      this.saveContacts(contacts);
+      return { contacts };
+    });
+  };
+
   saveContacts = (arrContacts) => {
     localStorage.setItem('contacts', JSON.stringify(arrContacts));
   };
@@ -86,7 +94,11 @@ export class App extends Component {
             >
               Save
             </button>
-            <button className='btn' id='delete-btn'>
+            <button
+              className='btn'
+              id='delete-btn'
+              onClick={this.deleteContactByButton}
+            >
               Delete
             </button>
           </div>
