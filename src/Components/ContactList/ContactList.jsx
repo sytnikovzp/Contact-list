@@ -4,18 +4,21 @@ import ContactItem from './ContactItem/ContactItem';
 
 export class ContactList extends Component {
   render() {
+    // console.log(this.props);
     return (
-      <div id='contact-list'>
-        {this.props.contacts.map((contact) => {
-          return (
-            <ContactItem
-              key={contact.id}
-              contact={contact}
-              onToggle={this.props.onToggle}
-              onDelete={this.props.onDelete}
-            />
-          );
-        })}
+      <div id='wrapper'>
+        <div id='contact-list'>
+          {this.props.contacts.map((contact) => {
+            return (
+              <ContactItem
+                key={contact.id}
+                contact={contact}
+                onToggle={this.props.onToggle}
+                onDelete={this.props.onDelete}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

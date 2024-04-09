@@ -1,5 +1,11 @@
-#contact-list{
+#wrapper {
+  /* width: 280px; */
+  overflow: hidden;
+}
+
+#contact-list {
   /* border: 1px solid black; */
   width: 280px;
   height: 400px;
+  overflow-y: scroll;
 }

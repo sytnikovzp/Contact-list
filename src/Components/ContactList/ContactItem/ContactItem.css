@@ -7,7 +7,7 @@
   margin-bottom: 10px;
   min-width: 200px;
   max-width: 300px;
-  height: 50px;
+  height: 35px;
   display: flex;
   align-items: center;
   padding-left: 5px;
@@ -19,8 +19,8 @@
   border: 1px solid black;
   min-height: 25px;
   min-width: 25px;
-  text-align: center;
-  margin: auto;
+  text-align: rigth;
+  margin-left: 70px;
   display: inline-block;
   background-color: rgba(255, 0, 0, 0.562);
   color: white;
@@ -29,4 +29,5 @@
   min-width: 300px;
   margin-right: 50px;
   font-size: 20px;
+  text-align: left;
 }

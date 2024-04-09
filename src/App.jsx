@@ -6,7 +6,11 @@ import { customAlphabet } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [{}],
+    contacts: [
+      {
+        id: 0,
+      },
+    ],
   };
 
   componentDidMount() {
@@ -82,7 +86,7 @@ export class App extends Component {
             >
               Save
             </button>
-            <button className='btn' id='save-btn' disabled>
+            <button className='btn' id='delete-btn'>
               Delete
             </button>
           </div>
