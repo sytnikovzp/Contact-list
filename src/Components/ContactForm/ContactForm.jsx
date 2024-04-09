@@ -33,6 +33,30 @@ export class ContactForm extends Component {
     });
   };
 
+  onInputClearFirstName = (event) => {
+    this.setState({
+      fName: '',
+    });
+  };
+
+  onInputClearLastName = (event) => {
+    this.setState({
+      lName: '',
+    });
+  };
+
+  onInputClearEmail = (event) => {
+    this.setState({
+      eMail: '',
+    });
+  };
+
+  onInputClearContactPhone = (event) => {
+    this.setState({
+      cPhone: '',
+    });
+  };
+
   onFormSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit({
@@ -63,7 +87,9 @@ export class ContactForm extends Component {
             value={this.state.fName}
             onChange={this.onInputChangeFirstName}
           />
-          <span className='clear-btn'>X</span>
+          <span className='clear-btn' onClick={this.onInputClearFirstName}>
+            X
+          </span>
         </div>
         <div className='contact-form-item'>
           <input
@@ -74,7 +100,9 @@ export class ContactForm extends Component {
             value={this.state.lName}
             onChange={this.onInputChangeLastName}
           />
-          <span className='clear-btn'>X</span>
+          <span className='clear-btn' onClick={this.onInputClearLastName}>
+            X
+          </span>
         </div>
         <div className='contact-form-item'>
           <input
@@ -85,7 +113,9 @@ export class ContactForm extends Component {
             value={this.state.eMail}
             onChange={this.onInputChangeEmail}
           />
-          <span className='clear-btn'>X</span>
+          <span className='clear-btn' onClick={this.onInputClearEmail}>
+            X
+          </span>
         </div>
         <div className='contact-form-item'>
           <input
@@ -96,7 +126,9 @@ export class ContactForm extends Component {
             value={this.state.cPhone}
             onChange={this.onInputChangeContactPhone}
           />
-          <span className='clear-btn'>X</span>
+          <span className='clear-btn' onClick={this.onInputClearContactPhone}>
+            X
+          </span>
         </div>
       </form>
     );

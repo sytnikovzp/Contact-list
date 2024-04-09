@@ -6,24 +6,7 @@ import { customAlphabet } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [
-      {
-        id: 1,
-        fName: '1 First name',
-        lName: '1 Last name',
-        eMail: '1 test@gmail.com',
-        cPhone: '239-78-79',
-        isEditNow: false,
-      },
-      {
-        id: 2,
-        fName: '2 First name',
-        lName: '2 Last name',
-        eMail: '2 test@gmail.com',
-        cPhone: '239-78-79',
-        isEditNow: false,
-      },
-    ],
+    contacts: [{}],
   };
 
   componentDidMount() {
@@ -79,12 +62,12 @@ export class App extends Component {
       <div id='container'>
         <h2>Contact list</h2>
         <div id='main-form'>
-          <ContactList 
-          contacts={this.state.contacts}
-          onToggle={this.toggleToContactEdit}
-          onDelete={this.deleteContact}
+          <ContactList
+            contacts={this.state.contacts}
+            onToggle={this.toggleToContactEdit}
+            onDelete={this.deleteContact}
           />
-          <ContactForm onSubmit={this.addContact}/>
+          <ContactForm onSubmit={this.addContact} />
           <div className='btn-block'>
             <button className='btn' id='new-btn'>
               New

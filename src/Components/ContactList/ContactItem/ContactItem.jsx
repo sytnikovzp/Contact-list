@@ -13,7 +13,7 @@ export class ContactItem extends Component {
     return (
       <div
         className={'contact-item ' + (isEditNow ? 'edit-now' : '')}
-        onClick={() => onToggle(id)}
+        onDoubleClick={() => onToggle(id)}
       >
         <p className='content'>{fName + ' ' + lName}</p>
         <span className='delete-btn' onClick={this.onContactDelete}>
