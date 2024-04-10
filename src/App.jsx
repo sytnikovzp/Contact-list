@@ -31,29 +31,39 @@ export class App extends Component {
       const contacts = state.contacts.map((contact) => {
         if (contact.isEditNow === true && contact.id !== id) {
           console.log(contact);
+          this.showButton();
           return { ...contact, isEditNow: (contact.isEditNow = false) };
         }
         if (contact.isEditNow === false && contact.id === id) {
           console.log(contact);
+          this.showButton();
           return { ...contact, isEditNow: (contact.isEditNow = true) };
         }
+        this.showButton();
         return contact;
-        this.hideButton();
       });
       this.saveContacts(contacts);
       return { contacts };
     });
   };
 
+  showButton = () => {
+    this.setState((state) => {
+      const delButton = document.getElementById('delButton');
+      const contacts = state.contacts.filter(
+        (contact) => contact.isEditNow === true
+      );
+      return delButton.classList.remove('hidden');
+    });
+  };
+
   hideButton = () => {
     this.setState((state) => {
       const delButton = document.getElementById('delButton');
-      state.contacts.filter((contact) => {
-        if (contact.isEditNow === false) {
-          return delButton.classList.add('hidden');
-        }
-        return delButton.classList.remove('hidden');
-      });
+      const contacts = state.contacts.filter(
+        (contact) => contact.isEditNow === false
+      );
+      return delButton.classList.add('hidden');
     });
   };
 
