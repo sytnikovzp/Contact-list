@@ -32,11 +32,23 @@ export class App extends Component {
         if (contact.id !== id) {
           return contact;
         }
-        this.hideButton();
-        return { ...contact, isEditNow: !contact.isEditNow };
+        // this.hideButton();
+        this.disableEdit();
+        return { ...contact, isEditNow: contact.isEditNow = true };
       });
       this.saveContacts(contacts);
       return { contacts };
+    });
+  };
+
+  disableEdit = () => {
+    this.setState((state) => {
+      const contacts = state.contacts.map((contact) => {
+        if (contact.isEditNow === true) {
+          console.log(contact);
+          return { ...contact, isEditNow: contact.isEditNow = false};
+        }
+      });
     });
   };
 

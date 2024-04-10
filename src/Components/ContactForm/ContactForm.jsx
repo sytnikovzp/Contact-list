@@ -60,7 +60,7 @@ export class ContactForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit({
-      id: 0, // Здесь добавил нулевой ИД для красивой записи в LocalStorage
+      id: null, 
       fName: this.state.fName,
       lName: this.state.lName,
       eMail: this.state.eMail,
