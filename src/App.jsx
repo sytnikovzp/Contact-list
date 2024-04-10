@@ -26,7 +26,7 @@ export class App extends Component {
     }
   }
 
-  toggleToContactEdit = (id) => {
+  editContact = (id) => {
     this.setState((state) => {
       const contacts = state.contacts.map((contact) => {
         if (contact.isEditNow === true && contact.id !== id) {
@@ -84,6 +84,7 @@ export class App extends Component {
   addContact = (contact) => {
     const nanoid = customAlphabet('1234567890', 3);
     contact.id = nanoid();
+    this.newContact();
     this.setState((state) => {
       const contacts = [...state.contacts, contact];
       this.saveContacts(contacts);
@@ -121,10 +122,13 @@ export class App extends Component {
         <div id='main-form'>
           <ContactList
             contacts={this.state.contacts}
-            onToggle={this.toggleToContactEdit}
+            onEdit={this.editContact}
             onDelete={this.deleteContact}
           />
-          <ContactForm onSubmit={this.addContact} />
+          <ContactForm 
+          onSubmit={this.addContact} 
+          onContactEdit={this.editContact}
+          />
           <div className='btn-block'>
             <button className='btn' id='new-btn' onClick={this.newContact}>
               New

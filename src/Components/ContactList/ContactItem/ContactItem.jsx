@@ -9,11 +9,11 @@ export class ContactItem extends Component {
 
   render() {
     const { id, fName, lName, eMail, cPhone, isEditNow } = this.props.contact;
-    const onToggle = this.props.onToggle;
+    const onEdit = this.props.onEdit;
     return (
       <div
         className={'contact-item ' + (isEditNow ? 'edit-now' : '')}
-        onDoubleClick={() => onToggle(id)}
+        onDoubleClick={() => onEdit(id)}
       >
         <p className='content'>{fName + ' ' + lName}</p>
         <span className='delete-btn' onClick={this.onContactDelete}>

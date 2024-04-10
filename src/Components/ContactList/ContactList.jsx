@@ -12,7 +12,7 @@ export class ContactList extends Component {
               <ContactItem
                 key={contact.id}
                 contact={contact}
-                onToggle={this.props.onToggle}
+                onEdit={this.props.onEdit}
                 onDelete={this.props.onDelete}
               />
             );

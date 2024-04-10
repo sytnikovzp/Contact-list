@@ -2,6 +2,11 @@ import { Component } from 'react';
 import './ContactForm.css';
 
 export class ContactForm extends Component {
+  onContactEdit = (event) => {
+    event.stopPropagation();
+    this.props.onEdit(this.props.contact.id);
+  };
+
   state = {
     fName: '',
     lName: '',
