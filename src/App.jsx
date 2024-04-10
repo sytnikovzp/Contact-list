@@ -29,28 +29,30 @@ export class App extends Component {
   toggleToContactEdit = (id) => {
     this.setState((state) => {
       const contacts = state.contacts.map((contact) => {
-        if (contact.id !== id) {
+        if (contact.isEditNow === true) {
+          console.log(contact);
+          return { ...contact, isEditNow: (contact.isEditNow = false) };
+        } else if (contact.id !== id) {
           return contact;
         }
         // this.hideButton();
-        this.disableEdit();
-        return { ...contact, isEditNow: contact.isEditNow = true };
+        return { ...contact, isEditNow: (contact.isEditNow = true) };
       });
       this.saveContacts(contacts);
       return { contacts };
     });
   };
 
-  disableEdit = () => {
-    this.setState((state) => {
-      const contacts = state.contacts.map((contact) => {
-        if (contact.isEditNow === true) {
-          console.log(contact);
-          return { ...contact, isEditNow: contact.isEditNow = false};
-        }
-      });
-    });
-  };
+  // disableEdit = () => {
+  //   this.setState((state) => {
+  //     const contacts = state.contacts.map((contact) => {
+  //       if (contact.isEditNow === true) {
+  //         console.log(contact);
+  //         return { ...contact, isEditNow: contact.isEditNow = false};
+  //       }
+  //     });
+  //   });
+  // };
 
   hideButton = () => {
     this.setState((state) => {
