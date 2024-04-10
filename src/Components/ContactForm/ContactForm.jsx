@@ -83,6 +83,8 @@ export class ContactForm extends Component {
             type='text'
             name='fName'
             id='fName'
+            required
+            maxLength="12"
             placeholder='First name'
             value={this.state.fName}
             onChange={this.onInputChangeFirstName}
@@ -96,6 +98,8 @@ export class ContactForm extends Component {
             type='text'
             name='lName'
             id='lName'
+            required
+            maxLength="12"
             placeholder='Last name'
             value={this.state.lName}
             onChange={this.onInputChangeLastName}
@@ -109,6 +113,7 @@ export class ContactForm extends Component {
             type='email'
             name='eMail'
             id='eMail'
+            required
             placeholder='E-mail'
             value={this.state.eMail}
             onChange={this.onInputChangeEmail}
@@ -122,6 +127,7 @@ export class ContactForm extends Component {
             type='tel'
             name='cPhone'
             id='cPhone'
+            required
             placeholder='Phone'
             value={this.state.cPhone}
             onChange={this.onInputChangeContactPhone}

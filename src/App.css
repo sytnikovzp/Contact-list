@@ -27,7 +27,7 @@
 #container {
   border: 1px solid black;
   border-radius: 5%;
-  width: 600px;
+  width: 630px;
   height: 600px;
   background-color: hsl(0, 45%, 96%);
 }
@@ -53,7 +53,6 @@
   margin: 5px;
 }
 
-#delete-btn {
-  /*  visibility: hidden; */
-  visibility: visible;
+.hidden {
+  visibility: hidden;
 }
