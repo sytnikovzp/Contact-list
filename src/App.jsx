@@ -30,12 +30,10 @@ export class App extends Component {
     this.setState((state) => {
       const contacts = state.contacts.map((contact) => {
         if (contact.isEditNow === true && contact.id !== id) {
-          console.log(contact);
           this.showButton();
           return { ...contact, isEditNow: (contact.isEditNow = false) };
         }
         if (contact.isEditNow === false && contact.id === id) {
-          console.log(contact);
           this.showButton();
           return { ...contact, isEditNow: (contact.isEditNow = true) };
         }
@@ -64,6 +62,21 @@ export class App extends Component {
         (contact) => contact.isEditNow === false
       );
       return delButton.classList.add('hidden');
+    });
+  };
+
+  newContact = () => {
+    this.setState((state) => {
+      const contacts = state.contacts.map((contact) => {
+        if (contact.isEditNow === true) {
+          this.showButton();
+          return { ...contact, isEditNow: (contact.isEditNow = false) };
+        }
+        this.hideButton();
+        return contact;
+      });
+      this.saveContacts(contacts);
+      return { contacts };
     });
   };
 
@@ -112,7 +125,7 @@ export class App extends Component {
           />
           <ContactForm onSubmit={this.addContact} />
           <div className='btn-block'>
-            <button className='btn' id='new-btn'>
+            <button className='btn' id='new-btn' onClick={this.newContact}>
               New
             </button>
           </div>

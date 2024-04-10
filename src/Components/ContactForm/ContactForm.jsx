@@ -84,6 +84,7 @@ export class ContactForm extends Component {
             name='fName'
             id='fName'
             required
+            autoFocus
             maxLength='12'
             placeholder='First name'
             value={this.state.fName}
