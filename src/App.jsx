@@ -72,9 +72,10 @@ export class App extends Component {
           this.showButton();
           return { ...contact, isEditNow: (contact.isEditNow = false) };
         }
-        this.hideButton();
         return contact;
       });
+      this.hideButton();
+      const inputActive = document.getElementById('fName').focus();
       this.saveContacts(contacts);
       return { contacts };
     });
