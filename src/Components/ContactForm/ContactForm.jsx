@@ -33,25 +33,25 @@ export class ContactForm extends Component {
     });
   };
 
-  onInputClearFirstName = (event) => {
+  onInputClearFirstName = () => {
     this.setState({
       fName: '',
     });
   };
 
-  onInputClearLastName = (event) => {
+  onInputClearLastName = () => {
     this.setState({
       lName: '',
     });
   };
 
-  onInputClearEmail = (event) => {
+  onInputClearEmail = () => {
     this.setState({
       eMail: '',
     });
   };
 
-  onInputClearContactPhone = (event) => {
+  onInputClearContactPhone = () => {
     this.setState({
       cPhone: '',
     });
@@ -84,7 +84,7 @@ export class ContactForm extends Component {
             name='fName'
             id='fName'
             required
-            maxLength="12"
+            maxLength='12'
             placeholder='First name'
             value={this.state.fName}
             onChange={this.onInputChangeFirstName}
@@ -99,7 +99,7 @@ export class ContactForm extends Component {
             name='lName'
             id='lName'
             required
-            maxLength="12"
+            maxLength='12'
             placeholder='Last name'
             value={this.state.lName}
             onChange={this.onInputChangeLastName}
