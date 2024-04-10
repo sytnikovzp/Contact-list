@@ -32,47 +32,8 @@ export class App extends Component {
         if (contact.id !== id) {
           return contact;
         }
-        // this.onHideButton();
-        // this.onDisableEdit();
         return { ...contact, isEditNow: !contact.isEditNow };
       });
-      this.saveContacts(contacts);
-      return { contacts };
-    });
-  };
-
-  // !!!!!!!!!!
-  onDisableEdit = (id) => {
-    this.setState((state) => {
-      const contacts = state.contacts.map((contact) => {
-        return { ...contact, isEditNow: contact.isEditNow = false };
-      });
-      this.saveContacts(contacts);
-      return { contacts };
-    });
-  };
-
-  // !!!!!!!!!!
-
-  // !!!!!!!!!!!!!!
-  onHideButton = (id) => {
-    this.setState((state) => {
-      const delButton = document.getElementById('delButton');
-      const contacts = state.contacts.filter((contact) => {
-        if (contact.isEditNow !== true) {
-          return delButton.classList.add('hidden');
-        }
-        return delButton.classList.remove('hidden');
-      });
-    });
-  };
-  // !!!!!!!!!!!!!!!
-
-  deleteContactByButton = (id) => {
-    this.setState((state) => {
-      const contacts = state.contacts.filter(
-        (contact) => contact.isEditNow !== true
-      );
       this.saveContacts(contacts);
       return { contacts };
     });
