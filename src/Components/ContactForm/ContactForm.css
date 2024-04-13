@@ -1,11 +1,11 @@
-* {
-  box-sizing: border-box;
+#wrapper-form {
+  border: 1px solid black;
 }
 
 #contact-form {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 275px;
-  height: 400px;
+  height: 500px;
 }
 
 .contact-form-item {
@@ -33,4 +33,19 @@ input {
   min-width: 150px;
   margin-right: 10px;
   font-size: 20px;
+}
+
+.btn-form-block {
+  /* border: 1px solid black; */
+  width: 275px;
+  height: 50px;
+  margin-top: 180px;
+}
+
+.btn {
+  border: 1px solid black;
+  width: 80px;
+  height: 40px;
+  font-size: 14px;
+  margin: 5px;
 }

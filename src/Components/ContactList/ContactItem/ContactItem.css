@@ -1,6 +1,3 @@
-* {
-  box-sizing: border-box;
-}
 .contact-item {
   background-color: #ebe6d9;
   border: 1px solid black;
@@ -13,9 +10,11 @@
   justify-content: space-between;
   padding-left: 5px;
 }
+
 .contact-item.edit-now {
   background-color: cadetblue;
 }
+
 .delete-btn {
   border: 1px solid black;
   min-height: 25px;
@@ -25,6 +24,7 @@
   background-color: rgba(255, 0, 0, 0.562);
   color: white;
 }
+
 .content {
   min-width: 320px;
   margin-right: 50px;

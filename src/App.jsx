@@ -61,19 +61,6 @@ export class App extends Component {
             onDelete={this.deleteContact}
           />
           <ContactForm onSubmit={this.saveContact} />
-          <div className='btn-block'>
-            <button className='btn' id='new-btn' onClick={this.newContact}>
-              New
-            </button>
-          </div>
-          <div className='btn-block'>
-            <button type='submit' form='contact-form' className='btn'>
-              Save
-            </button>
-            <button id='delButton' className='btn'>
-              Delete
-            </button>
-          </div>
         </div>
       </div>
     );

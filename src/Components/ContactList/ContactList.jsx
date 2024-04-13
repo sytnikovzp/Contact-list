@@ -5,7 +5,7 @@ import ContactItem from './ContactItem/ContactItem';
 export class ContactList extends Component {
   render() {
     return (
-      <div id='wrapper'>
+      <div id='wrapper-list'>
         <div id='contact-list'>
           {this.props.contacts.map((contact) => {
             return (
@@ -16,6 +16,11 @@ export class ContactList extends Component {
               />
             );
           })}
+        </div>
+        <div className='btn-list-block'>
+          <button className='btn' id='new-btn' onClick={this.newContact}>
+            New
+          </button>
         </div>
       </div>
     );
