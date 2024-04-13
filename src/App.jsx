@@ -26,7 +26,13 @@ export class App extends Component {
     }
   }
 
+  selectContact = () => {};
+
   newContact = () => {};
+
+  createContact = () => {};
+
+  updateContact = () => {};
 
   saveContact = (contact) => {
     const nanoid = customAlphabet('1234567890', 3);
