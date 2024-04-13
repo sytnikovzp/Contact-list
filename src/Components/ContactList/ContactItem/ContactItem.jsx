@@ -8,14 +8,10 @@ export class ContactItem extends Component {
   };
 
   render() {
-    const { id, fName, lName, eMail, cPhone, isEditNow } = this.props.contact;
-    const onEdit = this.props.onEdit;
+    const { id, fName, lName } = this.props.contact;
     return (
-      <div
-        className={'contact-item ' + (isEditNow ? 'edit-now' : '')}
-        onDoubleClick={() => onEdit(id)}
-      >
-        <p className='content'>{fName + ' ' + lName}</p>
+      <div className={'contact-item'}>
+        <p className='content'>{fName} {lName}</p>
         <span className='delete-btn' onClick={this.onContactDelete}>
           X
         </span>

@@ -12,7 +12,6 @@ export class ContactList extends Component {
               <ContactItem
                 key={contact.id}
                 contact={contact}
-                onEdit={this.props.onEdit}
                 onDelete={this.props.onDelete}
               />
             );

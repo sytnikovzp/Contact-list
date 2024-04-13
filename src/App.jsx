@@ -26,68 +26,15 @@ export class App extends Component {
     }
   }
 
-  editContact = (id) => {
-    this.setState((state) => {
-      const contacts = state.contacts.map((contact) => {
-        if (contact.isEditNow === true && contact.id !== id) {
-          this.showButton();
-          return { ...contact, isEditNow: (contact.isEditNow = false) };
-        }
-        if (contact.isEditNow === false && contact.id === id) {
-          this.showButton();
-          return { ...contact, isEditNow: (contact.isEditNow = true) };
-        }
-        this.showButton();
-        return contact;
-      });
-      this.saveContacts(contacts);
-      return { contacts };
-    });
-  };
+  newContact = () => {};
 
-  showButton = () => {
-    this.setState((state) => {
-      const delButton = document.getElementById('delButton');
-      const contacts = state.contacts.filter(
-        (contact) => contact.isEditNow === true
-      );
-      return delButton.classList.remove('hidden');
-    });
-  };
-
-  hideButton = () => {
-    this.setState((state) => {
-      const delButton = document.getElementById('delButton');
-      const contacts = state.contacts.filter(
-        (contact) => contact.isEditNow === false
-      );
-      return delButton.classList.add('hidden');
-    });
-  };
-
-  newContact = () => {
-    this.setState((state) => {
-      const contacts = state.contacts.map((contact) => {
-        if (contact.isEditNow === true) {
-          this.showButton();
-          return { ...contact, isEditNow: (contact.isEditNow = false) };
-        }
-        return contact;
-      });
-      this.hideButton();
-      const inputActive = document.getElementById('fName').focus();
-      this.saveContacts(contacts);
-      return { contacts };
-    });
-  };
-
-  addContact = (contact) => {
+  saveContact = (contact) => {
     const nanoid = customAlphabet('1234567890', 3);
     contact.id = nanoid();
     this.newContact();
     this.setState((state) => {
       const contacts = [...state.contacts, contact];
-      this.saveContacts(contacts);
+      this.saveContactToLS(contacts);
       return { contacts };
     });
   };
@@ -95,23 +42,12 @@ export class App extends Component {
   deleteContact = (id) => {
     this.setState((state) => {
       const contacts = state.contacts.filter((contact) => contact.id !== id);
-      this.saveContacts(contacts);
+      this.saveContactToLS(contacts);
       return { contacts };
     });
   };
 
-  deleteContactByButton = (id) => {
-    this.setState((state) => {
-      const contacts = state.contacts.filter(
-        (contact) => contact.isEditNow === false
-      );
-      this.hideButton();
-      this.saveContacts(contacts);
-      return { contacts };
-    });
-  };
-
-  saveContacts = (arrContacts) => {
+  saveContactToLS = (arrContacts) => {
     localStorage.setItem('contacts', JSON.stringify(arrContacts));
   };
 
@@ -122,13 +58,9 @@ export class App extends Component {
         <div id='main-form'>
           <ContactList
             contacts={this.state.contacts}
-            onEdit={this.editContact}
             onDelete={this.deleteContact}
           />
-          <ContactForm 
-          onSubmit={this.addContact} 
-          onContactEdit={this.editContact}
-          />
+          <ContactForm onSubmit={this.saveContact} />
           <div className='btn-block'>
             <button className='btn' id='new-btn' onClick={this.newContact}>
               New
@@ -138,11 +70,7 @@ export class App extends Component {
             <button type='submit' form='contact-form' className='btn'>
               Save
             </button>
-            <button
-              id='delButton'
-              className='btn hidden'
-              onClick={this.deleteContactByButton}
-            >
+            <button id='delButton' className='btn'>
               Delete
             </button>
           </div>

@@ -2,11 +2,6 @@ import { Component } from 'react';
 import './ContactForm.css';
 
 export class ContactForm extends Component {
-  onContactEdit = (event) => {
-    event.stopPropagation();
-    this.props.onEdit(this.props.contact.id);
-  };
-
   state = {
     fName: '',
     lName: '',
@@ -14,63 +9,26 @@ export class ContactForm extends Component {
     cPhone: '',
   };
 
-  onInputChangeFirstName = (event) => {
+  onInputChange = (event) => {
     this.setState({
-      fName: event.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
-  onInputChangeLastName = (event) => {
+  onInputClear = (event) => {
+    const sibling = event.target.previousSibling;
     this.setState({
-      lName: event.target.value,
-    });
-  };
-
-  onInputChangeEmail = (event) => {
-    this.setState({
-      eMail: event.target.value,
-    });
-  };
-
-  onInputChangeContactPhone = (event) => {
-    this.setState({
-      cPhone: event.target.value,
-    });
-  };
-
-  onInputClearFirstName = () => {
-    this.setState({
-      fName: '',
-    });
-  };
-
-  onInputClearLastName = () => {
-    this.setState({
-      lName: '',
-    });
-  };
-
-  onInputClearEmail = () => {
-    this.setState({
-      eMail: '',
-    });
-  };
-
-  onInputClearContactPhone = () => {
-    this.setState({
-      cPhone: '',
+      [sibling.name]: '',
     });
   };
 
   onFormSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit({
-      id: null, 
       fName: this.state.fName,
       lName: this.state.lName,
       eMail: this.state.eMail,
       cPhone: this.state.cPhone,
-      isEditNow: false,
     });
     this.setState({
       fName: '',
@@ -88,14 +46,11 @@ export class ContactForm extends Component {
             type='text'
             name='fName'
             id='fName'
-            required
-            autoFocus
-            maxLength='12'
             placeholder='First name'
             value={this.state.fName}
-            onChange={this.onInputChangeFirstName}
+            onChange={this.onInputChange}
           />
-          <span className='clear-btn' onClick={this.onInputClearFirstName}>
+          <span className='clear-btn' onClick={this.onInputClear}>
             X
           </span>
         </div>
@@ -104,13 +59,11 @@ export class ContactForm extends Component {
             type='text'
             name='lName'
             id='lName'
-            required
-            maxLength='12'
             placeholder='Last name'
             value={this.state.lName}
-            onChange={this.onInputChangeLastName}
+            onChange={this.onInputChange}
           />
-          <span className='clear-btn' onClick={this.onInputClearLastName}>
+          <span className='clear-btn' onClick={this.onInputClear}>
             X
           </span>
         </div>
@@ -119,12 +72,11 @@ export class ContactForm extends Component {
             type='email'
             name='eMail'
             id='eMail'
-            required
             placeholder='E-mail'
             value={this.state.eMail}
-            onChange={this.onInputChangeEmail}
+            onChange={this.onInputChange}
           />
-          <span className='clear-btn' onClick={this.onInputClearEmail}>
+          <span className='clear-btn' onClick={this.onInputClear}>
             X
           </span>
         </div>
@@ -133,12 +85,11 @@ export class ContactForm extends Component {
             type='tel'
             name='cPhone'
             id='cPhone'
-            required
             placeholder='Phone'
             value={this.state.cPhone}
-            onChange={this.onInputChangeContactPhone}
+            onChange={this.onInputChange}
           />
-          <span className='clear-btn' onClick={this.onInputClearContactPhone}>
+          <span className='clear-btn' onClick={this.onInputClear}>
             X
           </span>
         </div>
