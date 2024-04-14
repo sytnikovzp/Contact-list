@@ -4,6 +4,7 @@ import ContactItem from './ContactItem/ContactItem';
 
 export class ContactList extends Component {
   render() {
+    // console.log(this.props)
     return (
       <div id='wrapper-list'>
         <div id='contact-list'>
@@ -12,13 +13,18 @@ export class ContactList extends Component {
               <ContactItem
                 key={contact.id}
                 contact={contact}
+                onEdit={this.props.onEditContact}
                 onDelete={this.props.onDelete}
               />
             );
           })}
         </div>
         <div className='btn-list-block'>
-          <button className='btn' id='new-btn' onClick={this.newContact}>
+          <button
+            className='btn'
+            id='new-btn'
+            onClick={this.props.onNewContact}
+          >
             New
           </button>
         </div>

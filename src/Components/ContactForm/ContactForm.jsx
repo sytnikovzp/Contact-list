@@ -3,11 +3,27 @@ import './ContactForm.css';
 
 export class ContactForm extends Component {
   state = {
-    fName: '',
-    lName: '',
-    eMail: '',
-    cPhone: '',
+    ...this.props.currentContact,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    if (state.id === props.currentContact.id) {
+      return {};
+    }
+    return {
+      ...props.currentContact,
+    };
+  }
+
+  createEmptyContact() {
+    return {
+      // id: null,
+      fName: '',
+      lName: '',
+      eMail: '',
+      cPhone: '',
+    };
+  }
 
   onInputChange = (event) => {
     this.setState({
@@ -25,20 +41,24 @@ export class ContactForm extends Component {
   onFormSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit({
-      fName: this.state.fName,
-      lName: this.state.lName,
-      eMail: this.state.eMail,
-      cPhone: this.state.cPhone,
+      ...this.state,
     });
+    if (!this.state.id) {
+      this.setState({
+        ...this.createEmptyContact(),
+      });
+    }
+  };
+
+  onContactDelete = () => {
+    this.props.onDelete(this.props.state.id);
     this.setState({
-      fName: '',
-      lName: '',
-      eMail: '',
-      cPhone: '',
+      ...this.createEmptyContact(),
     });
   };
 
   render() {
+    console.log(this.props);
     return (
       <form id='contact-form' onSubmit={this.onFormSubmit}>
         <div id='wrapper-form'>
@@ -97,12 +117,21 @@ export class ContactForm extends Component {
         </div>
 
         <div className='btn-form-block'>
-          <button type='submit' className='btn'>
+          <button type='submit' id='save-btn' className='btn'>
             Save
           </button>
-          <button id='delButton' className='btn'>
-            Delete
-          </button>
+
+          {this.state.id ? (
+            <button
+              id='delButton'
+              className='btn'
+              onClick={this.onContactDelete}
+            >
+              Delete
+            </button>
+          ) : (
+            ''
+          )}
         </div>
       </form>
     );

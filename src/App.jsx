@@ -6,11 +6,8 @@ import { customAlphabet } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [
-      {
-        id: null,
-      },
-    ],
+    contacts: [],
+    currentContact: this.createEmptyContact(),
   };
 
   componentDidMount() {
@@ -26,23 +23,58 @@ export class App extends Component {
     }
   }
 
-  selectContact = () => {};
+  createEmptyContact() {
+    return {
+      id: null,
+      fName: '',
+      lName: '',
+      eMail: '',
+      cPhone: '',
+    };
+  }
 
-  newContact = () => {};
+  selectContact = (contact) => {
+    this.setState({
+      currentContact: contact,
+    });
+  };
 
-  createContact = () => {};
+  addNewContact = () => {
+    this.setState({ currentContact: this.createEmptyContact() });
+  };
 
-  updateContact = () => {};
+  createContact = (contact) => {
+    const nanoid = customAlphabet('1234567890', 5);
+    contact.id = nanoid();
+    this.setState((state) => {
+      const contacts = [...this.state.contacts, contact];
+      this.saveContactToLS(contacts);
+      return {
+        contacts,
+        currentContact: this.createEmptyContact(),
+      };
+    });
+  };
+
+  updateContact = (contact) => {
+    this.setState((state) => {
+      const contacts = state.contacts.map((item) => {
+        item.id === contact.id ? contact : item;
+      });
+      this.saveContactToLS(contacts);
+      return {
+        contacts,
+        currentContact: contact,
+      };
+    });
+  };
 
   saveContact = (contact) => {
-    const nanoid = customAlphabet('1234567890', 3);
-    contact.id = nanoid();
-    this.newContact();
-    this.setState((state) => {
-      const contacts = [...state.contacts, contact];
-      this.saveContactToLS(contacts);
-      return { contacts };
-    });
+    if (!contact.id) {
+      this.createContact(contact);
+    } else {
+      this.updateContact(contact);
+    }
   };
 
   deleteContact = (id) => {
@@ -64,9 +96,15 @@ export class App extends Component {
         <div id='main-form'>
           <ContactList
             contacts={this.state.contacts}
+            onNewContact={this.addNewContact}
+            onEditContact={this.selectContact}
             onDelete={this.deleteContact}
           />
-          <ContactForm onSubmit={this.saveContact} />
+          <ContactForm
+            currentContact={this.state.currentContact}
+            onSubmit={this.saveContact}
+            onDelete={this.deleteContact}
+          />
         </div>
       </div>
     );
