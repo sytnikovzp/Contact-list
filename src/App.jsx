@@ -83,7 +83,10 @@ export class App extends Component {
         ...this.state.contacts.filter((contact) => contact.id !== id),
       ];
       this.saveContactToLS(contacts);
-      return { contacts };
+      return {
+        contacts,
+        currentContact: this.createEmptyContact(),
+      };
     });
   };
 
