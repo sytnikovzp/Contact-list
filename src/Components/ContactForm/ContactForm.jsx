@@ -17,7 +17,7 @@ export class ContactForm extends Component {
 
   createEmptyContact() {
     return {
-      // id: null,
+      id: null,
       fName: '',
       lName: '',
       eMail: '',
@@ -51,14 +51,13 @@ export class ContactForm extends Component {
   };
 
   onContactDelete = () => {
-    this.props.onDelete(this.props.state.id);
+    this.props.onDelete(this.state.id);
     this.setState({
       ...this.createEmptyContact(),
     });
   };
 
   render() {
-    console.log(this.props);
     return (
       <form id='contact-form' onSubmit={this.onFormSubmit}>
         <div id='wrapper-form'>

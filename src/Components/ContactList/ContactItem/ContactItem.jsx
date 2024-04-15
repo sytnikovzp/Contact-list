@@ -13,11 +13,13 @@ export class ContactItem extends Component {
   };
 
   render() {
-    // console.log(this.props)
-    const { fName, lName } = this.props.contact;
+    const { id, fName, lName  } = this.props.contact;
     return (
       <div
-        className={'contact-item ' + (this.props.contact.id ? 'edit-now' : '')}
+        className={
+          'contact-item '
+          + (this.props.currentContact.id === id ? 'edit-now' : '')
+        }
         onDoubleClick={this.onContactEdit}
       >
         <p className='content'>

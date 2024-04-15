@@ -56,18 +56,18 @@ export class App extends Component {
     });
   };
 
-  updateContact = (contact) => {
+  updateContact(contact) {
     this.setState((state) => {
-      const contacts = state.contacts.map((item) => {
-        item.id === contact.id ? contact : item;
-      });
+      const contacts = state.contacts.map((item) =>
+        item.id === contact.id ? contact : item
+      );
       this.saveContactToLS(contacts);
       return {
         contacts,
         currentContact: contact,
       };
     });
-  };
+  }
 
   saveContact = (contact) => {
     if (!contact.id) {
@@ -79,7 +79,9 @@ export class App extends Component {
 
   deleteContact = (id) => {
     this.setState((state) => {
-      const contacts = state.contacts.filter((contact) => contact.id !== id);
+      const contacts = [
+        ...this.state.contacts.filter((contact) => contact.id !== id),
+      ];
       this.saveContactToLS(contacts);
       return { contacts };
     });
@@ -96,6 +98,7 @@ export class App extends Component {
         <div id='main-form'>
           <ContactList
             contacts={this.state.contacts}
+            currentContact={this.state.currentContact}
             onNewContact={this.addNewContact}
             onEditContact={this.selectContact}
             onDelete={this.deleteContact}

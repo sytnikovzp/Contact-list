@@ -4,7 +4,6 @@ import ContactItem from './ContactItem/ContactItem';
 
 export class ContactList extends Component {
   render() {
-    // console.log(this.props)
     return (
       <div id='wrapper-list'>
         <div id='contact-list'>
@@ -13,6 +12,7 @@ export class ContactList extends Component {
               <ContactItem
                 key={contact.id}
                 contact={contact}
+                currentContact={this.props.currentContact}
                 onEdit={this.props.onEditContact}
                 onDelete={this.props.onDelete}
               />
