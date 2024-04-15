@@ -46,13 +46,11 @@ export class App extends Component {
   createContact = (contact) => {
     const nanoid = customAlphabet('1234567890', 5);
     contact.id = nanoid();
-    this.setState((state) => {
-      const contacts = [...this.state.contacts, contact];
-      this.saveContactToLS(contacts);
-      return {
-        contacts,
-        currentContact: this.createEmptyContact(),
-      };
+    const contacts = [...this.state.contacts, contact];
+    this.saveContactToLS(contacts);
+    this.setState({
+      contacts: contacts,
+      currentContact: this.createEmptyContact(),
     });
   };
 
@@ -95,6 +93,7 @@ export class App extends Component {
   };
 
   render() {
+    // console.log(this.state)
     return (
       <div id='container'>
         <h2>Contact list</h2>

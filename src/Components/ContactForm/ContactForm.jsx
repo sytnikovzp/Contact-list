@@ -58,6 +58,7 @@ export class ContactForm extends Component {
   };
 
   render() {
+    // console.log(this.props)
     return (
       <form id='contact-form' onSubmit={this.onFormSubmit}>
         <div id='wrapper-form'>
