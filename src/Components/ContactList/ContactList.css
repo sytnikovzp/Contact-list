@@ -1,5 +1,4 @@
 #wrapper-list {
-  /* border: 1px solid black; */
   overflow: hidden;
 }
 
@@ -10,7 +9,6 @@
 }
 
 .btn-list-block {
-  /* border: 1px solid black; */
   width: 330px;
   height: 50px;
   margin-top: 30px;
