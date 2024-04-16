@@ -11,10 +11,6 @@
   padding-left: 5px;
 }
 
-.contact-item.edit-now {
-  background-color: cadetblue;
-}
-
 .delete-btn {
   border: 1px solid black;
   min-height: 25px;

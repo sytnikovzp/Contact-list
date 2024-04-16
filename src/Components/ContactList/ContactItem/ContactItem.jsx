@@ -13,15 +13,9 @@ export class ContactItem extends Component {
   };
 
   render() {
-    const { id, fName, lName } = this.props.contact;
+    const { fName, lName } = this.props.contact;
     return (
-      <div
-        className={
-          'contact-item ' +
-          (id === this.props.currentContact.id ? 'edit-now' : '')
-        }
-        onDoubleClick={this.onContactEdit}
-      >
+      <div className={'contact-item '} onDoubleClick={this.onContactEdit}>
         <p className='content'>
           {fName} {lName}
         </p>
