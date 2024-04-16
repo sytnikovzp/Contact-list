@@ -76,7 +76,7 @@ export class App extends Component {
   };
 
   deleteContact = (id) => {
-    this.setState((state) => {
+    this.setState(() => {
       const contacts = [
         ...this.state.contacts.filter((contact) => contact.id !== id),
       ];
@@ -93,7 +93,6 @@ export class App extends Component {
   };
 
   render() {
-    // console.log(this.state)
     return (
       <div id='container'>
         <h2>Contact list</h2>
